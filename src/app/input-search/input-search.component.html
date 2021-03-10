@@ -1,0 +1,20 @@
+<div class="search">
+  <div class="search__data" style="display: flex">
+    <select [formControl]="addDataControl">
+      <option *ngFor="let item of numberOfDataToAdd" [ngValue]="item">
+        {{ item }}
+      </option>
+    </select>
+    <button (click)="addRandomData()">Add random data</button>
+  </div>
+  <div class="search__input">
+    <input [formControl]="control" type="text" />
+    <button (click)="addClick()">Add</button>
+    <button (click)="removeClick()">Remove</button>
+  </div>
+  <div class="search-result" style="display: flex; flex-direction: column">
+    <span *ngFor="let item of items | async" (click)="control.setValue(item)">{{
+      item
+    }}</span>
+  </div>
+</div>
